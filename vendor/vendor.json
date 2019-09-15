@@ -9,28 +9,28 @@
 			"revisionTime": "2019-09-05T05:13:34Z"
 		},
 		{
-			"checksumSHA1": "pRylVgHnCs7JXI4c4i03vH0AyTQ=",
+			"checksumSHA1": "pW8UtrQGjnl16ukNbnzdCXOlSeU=",
 			"path": "github.com/gin-gonic/gin",
-			"revision": "f38c30a0d2f56c54397543f08902b00260c70ff6",
-			"revisionTime": "2019-09-06T05:56:59Z"
+			"revision": "b562fed3aa28c6e6d0299406d6b06bcb16a498cc",
+			"revisionTime": "2019-09-11T10:10:39Z"
 		},
 		{
 			"checksumSHA1": "216vrRckG3b+d6fG8DLsXPZxa48=",
 			"path": "github.com/gin-gonic/gin/binding",
-			"revision": "f38c30a0d2f56c54397543f08902b00260c70ff6",
-			"revisionTime": "2019-09-06T05:56:59Z"
+			"revision": "b562fed3aa28c6e6d0299406d6b06bcb16a498cc",
+			"revisionTime": "2019-09-11T10:10:39Z"
 		},
 		{
 			"checksumSHA1": "GAHho8qMLbDfGoD4w7SX7ZRT56U=",
 			"path": "github.com/gin-gonic/gin/internal/json",
-			"revision": "f38c30a0d2f56c54397543f08902b00260c70ff6",
-			"revisionTime": "2019-09-06T05:56:59Z"
+			"revision": "b562fed3aa28c6e6d0299406d6b06bcb16a498cc",
+			"revisionTime": "2019-09-11T10:10:39Z"
 		},
 		{
 			"checksumSHA1": "YU4LOusbVFYnlZlOyKw7PK3zhrE=",
 			"path": "github.com/gin-gonic/gin/render",
-			"revision": "f38c30a0d2f56c54397543f08902b00260c70ff6",
-			"revisionTime": "2019-09-06T05:56:59Z"
+			"revision": "b562fed3aa28c6e6d0299406d6b06bcb16a498cc",
+			"revisionTime": "2019-09-11T10:10:39Z"
 		},
 		{
 			"checksumSHA1": "NsLphrlxGA/Ao+hIbk8qsZtXhT4=",
@@ -117,10 +117,10 @@
 			"revisionTime": "2019-08-12T10:43:08Z"
 		},
 		{
-			"checksumSHA1": "CHemX2FQx0kEfA92IqS2QdALJ8k=",
+			"checksumSHA1": "MQO1W1y+qjp7TeYBMqf0AqsuKms=",
 			"path": "golang.org/x/sys/unix",
-			"revision": "749cb33beabd9aa6d3178e3de05bcc914f70b2bf",
-			"revisionTime": "2019-09-04T09:25:27Z"
+			"revision": "c3b328c6e5a763a2bfc82a48b4bd855037210934",
+			"revisionTime": "2019-09-13T12:12:07Z"
 		},
 		{
 			"checksumSHA1": "P7A15IT+qS+z2jL3z4Ttv7utpsI=",
@@ -135,5 +135,5 @@
 			"revisionTime": "2018-11-15T11:05:04Z"
 		}
 	],
-	"rootPath": "Heroku/simple-app-api"
+	"rootPath": "github.com/Bi-Demon/Heroku-API"
 }

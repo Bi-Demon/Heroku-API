@@ -7,13 +7,14 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/Bi-Demon/Heroku-API/blog/delivery/http"
+	blog "github.com/Bi-Demon/Heroku-API/blog/delivery/http"
+	repo "github.com/Bi-Demon/Heroku-API/blog/repository"
 	"github.com/gorilla/mux"
 )
 
 func main() {
 
-	ConnectDB()
+	repo.ConnectDB()
 
 	port, ok := os.LookupEnv("PORT")
 
@@ -23,10 +24,10 @@ func main() {
 
 	myRouter := mux.NewRouter().StrictSlash(true)
 
-	myRouter.HandleFunc("/", HomeHandler).Methods("GET")
+	myRouter.HandleFunc("/", blog.HomeHandler).Methods("GET")
 
-	myRouter.HandleFunc("/login", LoginHandler).Methods("POST")
-	myRouter.HandleFunc("/signup", SignupHandler).Methods("POST")
+	myRouter.HandleFunc("/login", blog.LoginHandler).Methods("POST")
+	myRouter.HandleFunc("/signup", blog.SignupHandler).Methods("POST")
 
 	log.Printf("Starting server on port %s \n", port)
 

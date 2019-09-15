@@ -1,7 +1,7 @@
 package models
 
-//users for login API
-type users struct {
+//Users for login API
+type Users struct {
 	Email    string
 	Password string `json:"-"`
 }

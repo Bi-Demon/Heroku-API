@@ -53,108 +53,108 @@ func main() {
 	}
 }
 
-//HomeHandler link to HomePage API
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
+// //HomeHandler link to HomePage API
+// func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
-	if r.Method != "GET" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
+// 	if r.Method != "GET" {
+// 		w.WriteHeader(http.StatusMethodNotAllowed)
 
-		return
-	}
+// 		return
+// 	}
 
-	w.WriteHeader(http.StatusOK)
-	fmt.Fprintln(w, "Hello World")
-}
+// 	w.WriteHeader(http.StatusOK)
+// 	fmt.Fprintln(w, "Hello World")
+// }
 
-//ConnectDB open connection to database
-func ConnectDB() {
-	var err error
+// //ConnectDB open connection to database
+// func ConnectDB() {
+// 	var err error
 
-	db, err = sql.Open("postgres", os.Getenv("DATABASE_URL"))
+// 	db, err = sql.Open("postgres", os.Getenv("DATABASE_URL"))
 
-	err = db.Ping()
+// 	err = db.Ping()
 
-	if err != nil {
-		log.Fatal("Error: Could not establish connection to databse")
-	}
-}
+// 	if err != nil {
+// 		log.Fatal("Error: Could not establish connection to databse")
+// 	}
+// }
 
-/*LoginHandler get user's information for logging in
-Return result user exist or not */
-func LoginHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
+// /*LoginHandler get user's information for logging in
+// Return result user exist or not */
+// func LoginHandler(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != "POST" {
+// 		w.WriteHeader(http.StatusMethodNotAllowed)
 
-		return
-	}
+// 		return
+// 	}
 
-	r.ParseForm()
+// 	r.ParseForm()
 
-	var Guest Credentials
-	Guest.email, Guest.password = r.FormValue("email"), r.FormValue("password")
+// 	var Guest Credentials
+// 	Guest.email, Guest.password = r.FormValue("email"), r.FormValue("password")
 
-	result := FindUser(Guest.email, Guest.password)
+// 	result := FindUser(Guest.email, Guest.password)
 
-	if result == 0 {
-		w.WriteHeader(http.StatusUnauthorized)
+// 	if result == 0 {
+// 		w.WriteHeader(http.StatusUnauthorized)
 
-		fmt.Fprintln(w, "Invalid email or password")
-		return
-	}
+// 		fmt.Fprintln(w, "Invalid email or password")
+// 		return
+// 	}
 
-	User := users{}
+// 	User := users{}
 
-	User.Email = Guest.email
-	User.Password = Guest.password
+// 	User.Email = Guest.email
+// 	User.Password = Guest.password
 
-	MyUser, err := json.Marshal(User)
-	if err != nil {
-		panic(err)
-	}
+// 	MyUser, err := json.Marshal(User)
+// 	if err != nil {
+// 		panic(err)
+// 	}
 
-	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type", "application/json")
-	w.Write(MyUser)
-}
+// 	w.WriteHeader(http.StatusOK)
+// 	w.Header().Set("Content-Type", "application/json")
+// 	w.Write(MyUser)
+// }
 
-//SignupHandler get guest's information for Signing up to API
-func SignupHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		w.WriteHeader(http.StatusMethodNotAllowed)
+// //SignupHandler get guest's information for Signing up to API
+// func SignupHandler(w http.ResponseWriter, r *http.Request) {
+// 	if r.Method != "POST" {
+// 		w.WriteHeader(http.StatusMethodNotAllowed)
 
-		return
-	}
+// 		return
+// 	}
 
-	r.ParseForm()
+// 	r.ParseForm()
 
-	var Guest Credentials
-	Guest.email, Guest.password = r.FormValue("email"), r.FormValue("password")
+// 	var Guest Credentials
+// 	Guest.email, Guest.password = r.FormValue("email"), r.FormValue("password")
 
-	if Guest.email == "" || Guest.password == "" {
+// 	if Guest.email == "" || Guest.password == "" {
 
-		w.WriteHeader(http.StatusBadRequest)
+// 		w.WriteHeader(http.StatusBadRequest)
 
-		fmt.Fprintln(w, "Email or Password is not valid")
+// 		fmt.Fprintln(w, "Email or Password is not valid")
 
-		return
-	}
+// 		return
+// 	}
 
-	result := getUser(Guest.email)
+// 	result := getUser(Guest.email)
 
-	if result == 1 {
-		w.WriteHeader(http.StatusUnauthorized)
+// 	if result == 1 {
+// 		w.WriteHeader(http.StatusUnauthorized)
 
-		fmt.Fprintln(w, "This Email has been Registered")
+// 		fmt.Fprintln(w, "This Email has been Registered")
 
-		return
-	}
+// 		return
+// 	}
 
-	AddUser(Guest.email, Guest.password)
-	w.WriteHeader(http.StatusOK)
+// 	AddUser(Guest.email, Guest.password)
+// 	w.WriteHeader(http.StatusOK)
 
-	fmt.Fprintln(w, "SUCCESS")
+// 	fmt.Fprintln(w, "SUCCESS")
 
-}
+// }
 
 //FindUser Looking for user' information storing on database
 func FindUser(email, password string) int64 {

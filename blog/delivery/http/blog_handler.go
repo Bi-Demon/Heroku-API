@@ -1,7 +1,10 @@
 package http
 
 import (
-	"github.com/Bi-Demon/Heroku-API/blog"
+	"encoding/json"
+	"fmt"
+	"net/http"
+
 	"github.com/Bi-Demon/Heroku-API/models"
 )
 
@@ -29,7 +32,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 
 	r.ParseForm()
 
-	var Guest Credentials
+	var Guest models.Credentials
 	Guest.email, Guest.password = r.FormValue("email"), r.FormValue("password")
 
 	result := FindUser(Guest.email, Guest.password)
@@ -41,7 +44,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	User := users{}
+	User := models.users{}
 
 	User.Email = Guest.email
 	User.Password = Guest.password
@@ -66,7 +69,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 
 	r.ParseForm()
 
-	var Guest Credentials
+	var Guest models.Credentials
 	Guest.email, Guest.password = r.FormValue("email"), r.FormValue("password")
 
 	if Guest.email == "" || Guest.password == "" {

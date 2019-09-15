@@ -3,19 +3,13 @@
 package main
 
 import (
-	"database/sql"
-	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
 
+	"github.com/Bi-Demon/Heroku-API/blog/delivery/http"
 	"github.com/gorilla/mux"
-
-	_ "github.com/lib/pq"
 )
-
-var db *sql.DB
 
 func main() {
 

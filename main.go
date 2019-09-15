@@ -17,17 +17,17 @@ import (
 
 var db *sql.DB
 
-//Credentials have information [email] & [password] for storing to database
-type Credentials struct {
-	email    string
-	password string
-}
+// //Credentials have information [email] & [password] for storing to database
+// type Credentials struct {
+// 	email    string
+// 	password string
+// }
 
-//users for login API
-type users struct {
-	Email    string
-	Password string `json:"-"`
-}
+// //users for login API
+// type users struct {
+// 	Email    string
+// 	Password string `json:"-"`
+// }
 
 func main() {
 

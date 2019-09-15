@@ -46,7 +46,8 @@ func FindUser(email, password string) int64 {
 	return rows
 }
 
-func getUser(email string) int64 {
+//GetUser explain...
+func GetUser(email string) int64 {
 
 	QueryStmt := `
 	SELECT * FROM users

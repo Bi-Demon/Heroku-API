@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
+	repo "github.com/Bi-Demon/Heroku-API/blog/repository"
 	"github.com/Bi-Demon/Heroku-API/models"
 )
 
@@ -33,9 +34,10 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	var Guest models.Credentials
-	Guest.email, Guest.password = r.FormValue("email"), r.FormValue("password")
 
-	result := FindUser(Guest.email, Guest.password)
+	Guest.Email, Guest.Password = r.FormValue("email"), r.FormValue("password")
+
+	result := repo.FindUser(Guest.Email, Guest.Password)
 
 	if result == 0 {
 		w.WriteHeader(http.StatusUnauthorized)
@@ -44,10 +46,10 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	User := models.users{}
+	User := models.Users{}
 
-	User.Email = Guest.email
-	User.Password = Guest.password
+	User.Email = Guest.Email
+	User.Password = Guest.Password
 
 	MyUser, err := json.Marshal(User)
 	if err != nil {
@@ -70,9 +72,9 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	var Guest models.Credentials
-	Guest.email, Guest.password = r.FormValue("email"), r.FormValue("password")
+	Guest.Email, Guest.Password = r.FormValue("email"), r.FormValue("password")
 
-	if Guest.email == "" || Guest.password == "" {
+	if Guest.Email == "" || Guest.Password == "" {
 
 		w.WriteHeader(http.StatusBadRequest)
 
@@ -81,7 +83,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	result := getUser(Guest.email)
+	result := repo.GetUser(Guest.Email)
 
 	if result == 1 {
 		w.WriteHeader(http.StatusUnauthorized)
@@ -91,7 +93,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	AddUser(Guest.email, Guest.password)
+	repo.AddUser(Guest.Email, Guest.Password)
 	w.WriteHeader(http.StatusOK)
 
 	fmt.Fprintln(w, "SUCCESS")
